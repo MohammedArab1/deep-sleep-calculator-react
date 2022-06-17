@@ -39,10 +39,11 @@ const Sleeptime = ({visible, deepSleepRecommendation}) => {
     },[deepSleepTime])
 
     useEffect( () => {
+        console.log("ATTEMPTING to set recommendation... deepSleepTimeVisibility is:", deepSleepTimeVisibility);
         if (deepSleepTimeVisibility) {
             setRecommendation(compareAndRecommend(deepSleepRecommendation,deepSleepTime))
         }
-    },[deepSleepTimeVisibility])
+    })
 
 
     const compareAndRecommend = (recommendation,deepSleepTime) => {
@@ -52,11 +53,9 @@ const Sleeptime = ({visible, deepSleepRecommendation}) => {
             const recommendationMin = recommendationFloats[0]
             const recommendationMax = recommendationFloats[1]
 
-            const notEnoughSleep = (Math.round(recommendationMin*100000) > Math.round(deepSleepTime.hoursOfDeepSleepMaximum*100000))
-            const tooMuchSleep = (Math.round(recommendationMax*100000) < Math.round(deepSleepTime.hoursOfDeepSleepMinimum*100000)) 
-            console.log('recommendation Minimum',Math.round(recommendationMin*100000));
-            console.log('Actual sleep maximum',Math.round(deepSleepTime.hoursOfDeepSleepMaximum*100000));
-            console.log(notEnoughSleep);
+            const notEnoughSleep = (Math.round(recommendationMin*100) > Math.round(deepSleepTime.hoursOfDeepSleepMaximum*100))
+            const tooMuchSleep = (Math.round(recommendationMax*100) < Math.round(deepSleepTime.hoursOfDeepSleepMinimum*100))
+
             if (notEnoughSleep) {
                 return 'You are not getting enough deep sleep! This could be due to lack of sleep in general, or because of too many interruptions in your sleep.'
             }

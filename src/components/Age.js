@@ -53,7 +53,6 @@ const Age = ({setSleepTimeInChild}) => {
             extra += -1
         }
         const age = (currentYear - userYear) + extra
-        console.log('in findAge... age:',age);
         return age
     }
 
