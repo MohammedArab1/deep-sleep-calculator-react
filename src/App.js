@@ -7,13 +7,13 @@ import Sleeptime from './components/Sleeptime';
 function App() {
 
   document.body.classList.add('background')
+  
   const [sleepTimeVisibility, setSleepTimeVisibility] = useState(false)
   const [deepSleepRecommendation, setDeepSleepRecommendation] = useState(false)
 
   const setSleepTimeInChild = (visibility,DSrecommendation = deepSleepRecommendation) => {
     setSleepTimeVisibility(visibility)
     setDeepSleepRecommendation(DSrecommendation)
-    console.log('in setSleepTimeInChild, visibility:',visibility,'deepSleepRecommendation:',DSrecommendation);
   }
 
 

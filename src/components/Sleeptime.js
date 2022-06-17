@@ -52,8 +52,8 @@ const Sleeptime = ({visible, deepSleepRecommendation}) => {
             const recommendationMin = recommendationFloats[0]
             const recommendationMax = recommendationFloats[1]
 
-            const notEnoughSleep = (Math.round(recommendationMin*100000) > Math.round(deepSleepTime.hoursOfDeepSleepMaximum*100000)) //If true, getting enough sleep
-             const tooMuchSleep = (Math.round(recommendationMax*100000) < Math.round(deepSleepTime.hoursOfDeepSleepMinimum*100000)) //If true, getting more than recommended deep sleep
+            const notEnoughSleep = (Math.round(recommendationMin*100000) > Math.round(deepSleepTime.hoursOfDeepSleepMaximum*100000))
+            const tooMuchSleep = (Math.round(recommendationMax*100000) < Math.round(deepSleepTime.hoursOfDeepSleepMinimum*100000)) 
             console.log('recommendation Minimum',Math.round(recommendationMin*100000));
             console.log('Actual sleep maximum',Math.round(deepSleepTime.hoursOfDeepSleepMaximum*100000));
             console.log(notEnoughSleep);
@@ -74,7 +74,7 @@ const Sleeptime = ({visible, deepSleepRecommendation}) => {
 
     return (
         <div>
-            <FadeIn visible={visible}delay={700}>
+            <FadeIn visible={visible}delay={300} transitionDuration={500}>
                 <h2> <u>{deepSleepRecommendation}</u></h2>
                 <h3>Next we will calculate how much deep sleep you've been getting</h3>
                 <label htmlFor="sleepTime"> <h3>Please input how many hours of uninterrepted sleep you get per night on average </h3></label>
@@ -86,20 +86,28 @@ const Sleeptime = ({visible, deepSleepRecommendation}) => {
             {deepSleepTime &&
             <FadeIn visible={deepSleepTimeVisibility && visible} delay={150}>
                 <div>
-                    <h4> <u>
-                        Roughly {deepSleepTime.minutesOfDeepSleepMinimum.toFixed(2)} - {deepSleepTime.minutesOfDeepSleepMaximum.toFixed(2)} minutes of your sleep are spent in deep sleep assuming you are a healthy adult 
+                    <h3> <u>
+                        About 13% ~ 23% of your sleep is spent in deep sleep. So roughly {deepSleepTime.minutesOfDeepSleepMinimum.toFixed(2)} - {deepSleepTime.minutesOfDeepSleepMaximum.toFixed(2)} minutes of your sleep is spent in deep sleep assuming you are a healthy adult 
                         </u>
-                    </h4>
+                    </h3>
                 </div> 
                 <div>
-                    <h4>
+                    <h3>
                         <u>
                         This translates to {deepSleepTime.hoursOfDeepSleepMinimum.toFixed(2)} - {deepSleepTime.hoursOfDeepSleepMaximum.toFixed(2)} hours of deep sleep per night
                         </u>
-                    </h4>
+                    </h3>
                 </div>
                 <div>
-                    {recommendation && <h4>{recommendation}</h4>}
+                    {recommendation && <h2>{recommendation}</h2>}
+                </div>
+                <div>
+                    <h3>*Please note: this is <u>NOT</u> official medical advice, but is instead based on internet data for recommended deep sleep per age group.</h3>
+                </div>
+                <div>
+                    <button className='button' onClick={() => {window.location.reload(false)}}>
+                        reset!
+                    </button>
                 </div>
             </FadeIn>
             }

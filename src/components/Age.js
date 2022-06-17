@@ -53,6 +53,7 @@ const Age = ({setSleepTimeInChild}) => {
             extra += -1
         }
         const age = (currentYear - userYear) + extra
+        console.log('in findAge... age:',age);
         return age
     }
 
@@ -65,58 +66,62 @@ const Age = ({setSleepTimeInChild}) => {
             {
                 age: 19,
                 month:0,
-                recommendation:"1.5 - 1.8 hours of deep sleep are recommended based on your age"
+                recommendation:"1.5 - 1.8 hours of deep sleep is recommended based on your age"
             },
             {
                 age: 13,
                 month:0,
-                recommendation:"1.7 - 2 hours of deep sleep are recommended based on the date of birth provided"
+                recommendation:"1.7 - 2 hours of deep sleep is recommended based on the date of birth provided"
             },
             {
                 age: 6,
                 month:0,
-                recommendation:"2 - 2.2 hours of deep sleep are recommended based on the date of birth provided"
+                recommendation:"2 - 2.2 hours of deep sleep is recommended based on the date of birth provided"
             },
             {
                 age: 4,
                 month:0,
-                recommendation:"2.2 - 2.6 hours of deep sleep are recommended based on the date of birth provided"
+                recommendation:"2.2 - 2.6 hours of deep sleep is recommended based on the date of birth provided"
             },
             {
                 age: 2,
                 month:0,
-                recommendation:"2.4 - 2.8 hours of deep sleep are recommended based on the date of birth provided"
+                recommendation:"2.4 - 2.8 hours of deep sleep is recommended based on the date of birth provided"
             },
             {
                 age: 0,
                 month:4,
-                recommendation:"2.8 - 3.0 hours of deep sleep are recommended based on the date of birth provided"
+                recommendation:"2.8 - 3.0 hours of deep sleep is recommended based on the date of birth provided"
             },
             {
                 age: 0,
                 month:1,
-                recommendation:"2.4 - 3.6 hours of deep sleep are recommended based on the date of birth provided"
+                recommendation:"2.4 - 3.6 hours of deep sleep is recommended based on the date of birth provided"
             },
         ]
         const recommendationGroup = recommendations.find( (ageGroup) => {
-            if (userAge > 0) {
+            if (userAge > 0 && userAge < 150) {
                 return userAge >= ageGroup.age
             }
             else {
                 return (userAge == ageGroup.age && monthDifference >= ageGroup.month)
             }
         })
-        return recommendationGroup.recommendation
+        if (recommendationGroup) {
+            return recommendationGroup.recommendation
+        }
+        
     }
 
 
     return (
         <div>
-                <label htmlFor="age"><h3>Please input your Date of Birth (for age group calculation): </h3></label>
-                <input type="date" id='age' onChange={(event) => {
-                    setDOBArray(event.target.value.split('-'))
-                    }}/>
-
+            <label htmlFor="age"><h3>Please input your Date of Birth (for age group calculation): </h3></label>
+            <input type="date" id='age' onChange={(event) => {
+                setDOBArray(event.target.value.split('-'))
+            }}/>
+            {userAge > 150 && <h3>I highly doubt you are over 150 years of age!</h3>}
+            {userAge < 0 && <h3>I don't think your birthday can be in the future :^)</h3>}
         </div>
     )
 }
