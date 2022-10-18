@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect} from 'react'
 import FadeIn from 'react-fade-in';
 
 const Sleeptime = ({visible, deepSleepRecommendation}) => {
@@ -39,7 +39,6 @@ const Sleeptime = ({visible, deepSleepRecommendation}) => {
     },[deepSleepTime])
 
     useEffect( () => {
-        console.log("ATTEMPTING to set recommendation... deepSleepTimeVisibility is:", deepSleepTimeVisibility);
         if (deepSleepTimeVisibility) {
             setRecommendation(compareAndRecommend(deepSleepRecommendation,deepSleepTime))
         }
@@ -69,14 +68,12 @@ const Sleeptime = ({visible, deepSleepRecommendation}) => {
     }
 
 
-
-
     return (
         <div>
             <FadeIn visible={visible}delay={300} transitionDuration={500}>
                 <h2> <u>{deepSleepRecommendation}</u></h2>
                 <h3>Next we will calculate how much deep sleep you've been getting</h3>
-                <label htmlFor="sleepTime"> <h3>Please input how many hours of uninterrepted sleep you get per night on average </h3></label>
+                <label htmlFor="sleepTime"> <h3>Please input how many hours of uninterrupted sleep you get per night on average </h3></label>
                 <br />
                 <input type="number" id='sleepTime' onChange={(event) => {
                     setSleepTime(event.target.value)
