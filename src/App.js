@@ -7,6 +7,7 @@ import Sleeptime from './components/Sleeptime';
 function App() {
 
   document.body.classList.add('background')
+
   
   const [sleepTimeVisibility, setSleepTimeVisibility] = useState(false)
   const [deepSleepRecommendation, setDeepSleepRecommendation] = useState(false)
@@ -18,7 +19,6 @@ function App() {
 
 
   return (
-    //MAKE SURE TO INCLUDE A CHART IN YOUR UI FOR DEEP SLEEP CALCULATIONS
     <div>
     <FadeIn transitionDuration={600} visible={true} delay={700}> 
       <div><h1>Welcome to my simple deep sleep project!</h1></div>

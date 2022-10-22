@@ -102,7 +102,7 @@ const Sleeptime = ({visible, deepSleepRecommendation}) => {
                 </div>
                 <div>
                     <button className='button' onClick={() => {window.location.reload(false)}}>
-                        reset!
+                        Reset
                     </button>
                 </div>
             </FadeIn>
