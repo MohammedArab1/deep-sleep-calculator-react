@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/deep-sleep-calculator-react/static/css/main.b3a986d5.css",
-    "main.js": "/deep-sleep-calculator-react/static/js/main.67a6e58f.js",
+    "main.css": "/deep-sleep-calculator-react/static/css/main.0d09f82a.css",
+    "main.js": "/deep-sleep-calculator-react/static/js/main.f1ca0b1e.js",
     "index.html": "/deep-sleep-calculator-react/index.html",
-    "main.b3a986d5.css.map": "/deep-sleep-calculator-react/static/css/main.b3a986d5.css.map",
-    "main.67a6e58f.js.map": "/deep-sleep-calculator-react/static/js/main.67a6e58f.js.map"
+    "main.0d09f82a.css.map": "/deep-sleep-calculator-react/static/css/main.0d09f82a.css.map",
+    "main.f1ca0b1e.js.map": "/deep-sleep-calculator-react/static/js/main.f1ca0b1e.js.map"
   },
   "entrypoints": [
-    "static/css/main.b3a986d5.css",
-    "static/js/main.67a6e58f.js"
+    "static/css/main.0d09f82a.css",
+    "static/js/main.f1ca0b1e.js"
   ]
 }
